@@ -148,6 +148,28 @@ App → Router → Controller → Service → Models 순으로 갈수록 데이�
 # 📍 트러블 슈팅
 
 **1. CORS 에러**
+![캡처](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8fbc1ff5-5975-4835-80cd-07491048c01a%2FUntitled.png?table=block&id=b06214ad-d9f4-42e5-be8f-e374d6b5e1cd&spaceId=530d1033-cf9f-41a2-b140-62d3e90887dd&width=1610&userId=b15b8061-acc6-470a-855e-73b04ad1a384&cache=v2)
+
+- CORS 는 Cross Origin Resource Sharing 의 약자로, **Domain 주소가 다를 때** ( = Origin이 다를 때 = Cross Origin 일 때), http 요청 (Resource Sharing) 을 어떻게 처리하는가에 대한 규약입니다.
+- **동일한 localhost 라도, port 번호가 다르면 (3000, 5000 등) 다른 Domain** 입니다.
+- 일반적으로 Domain 주소가 다르면, 보안을 위해 resource 요청을 수용하지 않아야 합니다.
+- 따라서 서버는, 다른 Domain 에서 요청이 왔을 때 이 요청을 수용하는지 안 하는지 대답을 해 주어야 합니다. 이 대답은 서버가 브라우저에 응답할 때의 Response Header 의 {ACCESS-CONTROL-ALLOW-ORIGIN: ~~} 형태로 주게 됩니다.
+- 이 때 ~~ 부분에 요청 Domain 이 포함되어 있거나 혹은 \* 로 표시했을 경우, 요청을 수용하겠다는 의미이며, 별도 헤더 표시가 없는 경우는 수용하지 않겠다라는 의미입니다. 이 경우 CORS 에러가 발생합니다.
+
+- ### 해결 방법
+
+1. `npm install cors` 를 통해 cors 모듈을 설치합니다.
+2. express 서버를 시작하는 코드가 담긴 app.js 에서 `import cors from “cors”` 를 합니다.
+3. `app.use(cors())` 를 통해 express 에 cors 객체를 연결합니다.
+
+**2. Authorization 에러**
+
+- Authorization 헤더에서 "Bearer"를 생략해서 HTTP 요청에서 인증 정보를 정확하게 식별할 수 없기 때문에 서버에서 오류가 발생했습니다. 포스트맨으로 테스트 했을 때는 인증이 정상적으로 되는데 프론트에서 HTTP 요청을 보내면 자꾸 에러가 발생했습니다. 이유를 모르겠어서 포스트맨에서는 Bearer Token을 선택해서 토큰을 담아주기에 프론트엔드 담당하시는 분께 토큰 앞에 Bearer를 붙여보라고 했더니 정상적으로 인증이 되었습니다.
+- `Bearer`는 토큰의 유형을 나타내고, 이것이 없으면 서버는 어떤 종류의 인증 토큰이 제공되었는지 알 수 없습니다. 따라서 "Bearer"를 생략하지 않고 인증 토큰을 올바르게 전달해야 합니다.
+
+**3. OBJECT ID 비교**
+
+- 오브젝트 ID를 추출하여 해당 ID를 가지고 DB에 있는 데이터에 접근하려고 할 때 정상적으로 접근이 되지 않았습니다. 그 이유는 추출한 오브젝트 ID는 타입이 문자열이고 DB에 저장되어 있는 오브젝트 ID는 MongoDB에서 고유한 데이터 형식이기 때문이었습니다. 해당 문제를 해결하기 위해서는 추출한 문자열 타입의 ID를 ObjectId로 변환하고 비교해야합니다.
 
 # 📍 느낀점/회고
 
