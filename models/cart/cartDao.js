@@ -16,7 +16,6 @@ async function addItemToCart(addData) {
 }
 
 async function deleteCartItem(id, items) {
-  console.log(1);
   if (!items) {
     const deleted = await Cart.deleteMany({ user: id });
     return deleted;
