@@ -148,7 +148,7 @@ App → Router → Controller → Service → Models 순으로 갈수록 데이�
 # 📍 트러블 슈팅
 
 **1. CORS 에러**
-![캡처](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8fbc1ff5-5975-4835-80cd-07491048c01a%2FUntitled.png?table=block&id=b06214ad-d9f4-42e5-be8f-e374d6b5e1cd&spaceId=530d1033-cf9f-41a2-b140-62d3e90887dd&width=1610&userId=b15b8061-acc6-470a-855e-73b04ad1a384&cache=v2)
+![캡처](https://user-images.githubusercontent.com/126956430/276878012-3a03034a-c071-4ad6-84ae-65780ff2f18d.png)
 
 - CORS 는 Cross Origin Resource Sharing 의 약자로, **Domain 주소가 다를 때** ( = Origin이 다를 때 = Cross Origin 일 때), http 요청 (Resource Sharing) 을 어떻게 처리하는가에 대한 규약입니다.
 - **동일한 localhost 라도, port 번호가 다르면 (3000, 5000 등) 다른 Domain** 입니다.
