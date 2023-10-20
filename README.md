@@ -130,7 +130,7 @@
 # 📍 폴더 구조
 
 **Layered Pattern**
-(https://user-images.githubusercontent.com/126956430/276858664-0478fa17-5ef0-4f47-bbf1-e1423af26e46.png)
+![캡처](https://user-images.githubusercontent.com/126956430/276858664-0478fa17-5ef0-4f47-bbf1-e1423af26e46.png)
 
 `단방향 의존성`과 `관심사 분리` 라는 두가지 핵심 원리에 기반하여 폴더 구조를 구성했습니다.
 
